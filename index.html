@@ -1,0 +1,3510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастер-класс</title>
+    
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+ :root {
+    /* Основные цвета — Профессиональный синий */
+    --primary-accent: rgb(66, 165, 245);       /* Голубой — акценты */
+    --primary-accent-dark: rgb(30, 136, 229);  /* Насыщенный голубой */
+    --primary-dark: rgb(25, 55, 95);           /* Тёмно-синий */
+    --primary-darker: rgb(15, 35, 65);         /* Глубокий синий */
+    --primary-white: rgb(255, 255, 255);       /* Белый */
+    
+    /* Дополнительные оттенки */
+    --secondary-gray: rgb(144, 164, 184);      /* Сине-серый */
+    --light-gray: rgb(248, 250, 252);          /* Светлый с синим оттенком */
+    
+    /* Вспомогательные */
+    --accent-light: rgba(66, 165, 245, 0.12);
+    --accent-medium: rgba(66, 165, 245, 0.25);
+    --gray-light: rgba(144, 164, 184, 0.2);
+    
+    /* Статусные цвета */
+    --success: #2E7D32;
+    --success-light: #E8F5E9;
+    --warning: #EF6C00;
+    --warning-light: #FFF3E0;
+    --danger: #C62828;
+    --danger-light: #FFEBEE;
+    
+    /* Текст */
+    --text-primary: rgb(45, 55, 72);           /* Тёмно-серый */
+    --text-secondary: rgb(100, 116, 139);      /* Серо-синий */
+    --background: var(--light-gray);
+    --surface: var(--primary-white);
+    --border: rgb(203, 213, 225);              /* Светло-серый с синевой */
+    
+    /* Алиасы для совместимости */
+    --primary-yellow: var(--primary-accent);
+    --secondary-gold: var(--primary-accent-dark);
+    --yellow-light: var(--accent-light);
+    --yellow-medium: var(--accent-medium);
+}
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 500;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+       /* HEADER - КОМПАКТНЫЙ */
+.header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    color: var(--primary-white);
+    padding: 20px 20px 15px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    overflow: hidden;
+    display: flex;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-accent), var(--primary-accent-dark), var(--primary-accent));
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(66, 165, 245, 0.1) 0%, transparent 60%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-accent-dark) 100%);
+    color: white;
+    padding: 5px 18px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 3px 15px rgba(66, 165, 245, 0.4);
+}
+
+.master-logo {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-accent-dark) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 15px rgba(66, 165, 245, 0.4);
+}
+
+.master-logo-inner {
+    width: 37px;
+    height: 37px;
+    background: var(--primary-darker);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+        /* NAVIGATION */
+        .nav {
+    background: var(--surface);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 10px rgba(25, 55, 95, 0.08);
+    position: fixed;
+    top: 120px; /* Высота шапки, подстройте под свою */
+    left: 0;
+    right: 0;
+    z-index: 999;
+    border-bottom: 3px solid var(--primary-accent);
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--border);
+    background: var(--surface);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+}
+
+.nav-btn:hover {
+    border-color: var(--primary-accent);
+    background: var(--accent-light);
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    background: var(--primary-accent);
+    border-color: var(--primary-accent);
+    color: white;
+}
+
+
+        .nav-btn .emoji {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+        .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 200px 80px 100px; /* Верхний отступ = высота шапки + навигации */
+}
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(30, 30, 28, 0.08);
+            border: 1px solid var(--border);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--background);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: var(--yellow-light);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* TEACHER PROFILE */
+        .teacher-profile {
+    background: linear-gradient(135deg, var(--accent-light) 0%, rgba(66, 165, 245, 0.18) 100%);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    border: 3px solid var(--primary-accent);
+    position: relative;
+    overflow: hidden;
+}
+
+.teacher-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 8px 25px rgba(25, 55, 95, 0.3);
+    border: 4px solid var(--primary-accent);
+}
+
+.teacher-tagline {
+    display: inline-block;
+    padding: 12px 25px;
+    background: white;
+    border-radius: 30px;
+    border: 3px solid var(--primary-accent);
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(66, 165, 245, 0.25);
+}
+
+        .teacher-profile::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(242, 193, 18, 0.1) 0%, transparent 70%);
+            animation: drift 6s ease-in-out infinite;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        
+        .teacher-name {
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .teacher-position {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .teacher-college-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .college-logo {
+            width: 900px;
+           
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid var(--primary-yellow);
+            overflow: hidden;
+        }
+
+        .college-logo-placeholder {         
+            
+            color: var(--primary-dark);
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .teacher-college {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .teacher-city {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* NAME BADGE */
+        .name-badge-section {
+            background: linear-gradient(135deg, var(--yellow-light) 0%, rgba(245, 215, 0, 0.2) 100%);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 25px;
+            border: 2px solid var(--primary-yellow);
+            text-align: center;
+        }
+
+        .name-badge-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .name-badge-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .badge-example {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 350px;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(245, 215, 0, 0.2);
+            border: 3px solid var(--primary-yellow);
+            position: relative;
+        }
+
+        .badge-example::before {
+            content: '📌';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+        }
+
+        .badge-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, rgb(15, 15, 14) 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .badge-name-area {
+            border: 3px dashed var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px 0;
+            background: #FAFAFA;
+        }
+
+        .badge-name-placeholder {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .badge-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .badge-tip {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .badge-tip-icon {
+            font-size: 1.8rem;
+        }
+
+        .badge-tip-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: left;
+        }
+
+        /* SAFETY */
+        .safety-infographic {
+            background: linear-gradient(135deg, var(--danger-light) 0%, #FFD7D5 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 2px solid var(--danger);
+        }
+
+        .safety-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .safety-rules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .safety-rule {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--danger);
+            transition: all 0.3s ease;
+        }
+
+        .safety-rule:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .safety-rule-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .safety-rule-text {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        /* QUOTE */
+       .quote-block {
+    background: linear-gradient(135deg, var(--accent-light) 0%, rgba(66, 165, 245, 0.15) 100%);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 15px 0;
+    border-left: 5px solid var(--primary-accent);
+    position: relative;
+}
+
+.quote-block::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--primary-accent);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 40px;
+            line-height: 1.7;
+        }
+
+        /* ROLES */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .role-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--secondary-gold));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .role-card:hover::before,
+        .role-card.expanded::before {
+            transform: scaleX(1);
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(30, 30, 28, 0.15);
+            border-color: var(--primary-yellow);
+        }
+
+        .role-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            background: var(--yellow-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover .role-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .role-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+
+        .role-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .role-count {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--yellow-light);
+            color: var(--primary-dark);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .role-details {
+            display: none;
+            text-align: left;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .role-card.expanded .role-details {
+            display: block;
+        }
+
+        .role-task {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: var(--background);
+            border-radius: 8px;
+        }
+
+        .role-task-icon {
+            font-size: 16px;
+        }
+
+        .role-task-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .click-hint {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* TIMER */
+      .timer-container {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    margin: 30px 0;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid var(--primary-accent);
+}
+
+.timer-label {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+    color: var(--primary-accent);
+}
+
+.timer-display {
+    font-size: 5rem;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 30px rgba(66, 165, 245, 0.5);
+    position: relative;
+    z-index: 1;
+    letter-spacing: 5px;
+    color: var(--primary-accent);
+}
+
+.timer-btn.start {
+    background: linear-gradient(135deg, var(--success) 0%, #1B5E20 100%);
+    color: white;
+}
+
+.timer-btn.pause {
+    background: linear-gradient(135deg, var(--warning) 0%, #E65100 100%);
+    color: white;
+}
+
+.timer-btn.reset {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 2px solid var(--primary-accent);
+}
+
+
+        .timer-display.warning {
+            color: var(--warning);
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        .timer-display.danger {
+            color: #FF6B6B;
+            animation: blink 0.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .timer-status {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timer-controls {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timer-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        /* TASK LIST */
+        .task-list {
+            list-style: none;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: var(--background);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .task-item:hover {
+            background: var(--yellow-light);
+        }
+
+        .task-number {
+            width: 28px;
+            height: 28px;
+            background: var(--primary-yellow);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .task-content h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--primary-dark);
+        }
+
+        .task-content p {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* MATERIALS */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .material-item {
+            padding: 20px;
+            background: var(--background);
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .material-item:hover {
+            border-color: var(--primary-yellow);
+            transform: translateY(-3px);
+        }
+
+        .material-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .material-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+        }
+
+       /* РАНДОМАЙЗЕР КОМАНД */
+.randomizer-section {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    border-radius: 24px;
+    padding: 35px;
+    text-align: center;
+    border: 3px solid var(--primary-accent);
+    position: relative;
+    overflow: hidden;
+}
+
+.randomizer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(66, 165, 245, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.randomizer-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 25px;
+}
+
+.randomizer-emoji {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 10px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.randomizer-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.randomizer-subtitle {
+    font-size: 1rem;
+    color: var(--primary-accent);
+    font-weight: 500;
+}
+
+/* РАНДОМАЙЗЕР КОМАНД */
+.randomizer-section {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    border-radius: 24px;
+    padding: 30px;
+    text-align: center;
+    border: 3px solid var(--primary-accent);
+    position: relative;
+    overflow: hidden;
+}
+
+.randomizer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(239, 83, 80, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.randomizer-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 15px;
+}
+
+.randomizer-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 8px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.randomizer-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.randomizer-subtitle {
+    font-size: 0.95rem;
+    color: var(--primary-accent);
+    font-weight: 500;
+}
+
+/* Прогресс-бар */
+.vote-progress {
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    height: 18px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-accent), #4FC3F7);
+    border-radius: 15px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-fill.complete {
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    animation: progressPulse 1s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+}
+
+/* РАНДОМАЙЗЕР С ОДНОЙ КНОПКОЙ */
+.randomizer-section {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    border-radius: 24px;
+    padding: 30px;
+    text-align: center;
+    border: 3px solid var(--primary-accent);
+    position: relative;
+    overflow: hidden;
+}
+/* ЗАГОЛОВОК СЕКЦИИ */
+.section-title-card {
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-medium) 100%);
+    border-radius: 16px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 2px solid var(--primary-accent);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.section-title-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-title-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 0;
+}
+
+.section-title-subtitle {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 8px 0 0 0;
+}
+.randomizer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(239, 83, 80, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.randomizer-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+.randomizer-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.randomizer-emoji.bounce {
+    animation: bounce 0.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.randomizer-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.randomizer-subtitle {
+    font-size: 0.95rem;
+    color: var(--primary-accent);
+    font-weight: 500;
+}
+
+/* Арена команд */
+.randomizer-arena {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.team-vote-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 18px 30px;
+    min-width: 145px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.team-vote-card.team-1 {
+    border-color: #42A5F5;
+}
+
+.team-vote-card.team-2 {
+    border-color: #EF5350;
+}
+
+.team-vote-card.spinning {
+    animation: cardPulse 0.15s ease-in-out infinite alternate;
+}
+
+@keyframes cardPulse {
+    from { transform: scale(1); opacity: 0.6; }
+    to { transform: scale(1.05); opacity: 1; }
+}
+
+.team-vote-card.winner {
+    transform: scale(1.08);
+    animation: winnerPop 0.4s ease;
+}
+
+.team-vote-card.team-1.winner {
+    background: rgba(66, 165, 245, 0.3);
+    box-shadow: 0 0 40px rgba(66, 165, 245, 0.6);
+    border-color: #42A5F5;
+}
+
+.team-vote-card.team-2.winner {
+    background: rgba(239, 83, 80, 0.3);
+    box-shadow: 0 0 40px rgba(239, 83, 80, 0.6);
+    border-color: #EF5350;
+}
+
+@keyframes winnerPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1.08); }
+}
+
+.team-vote-card.loser {
+    opacity: 0.4;
+    transform: scale(0.92);
+}
+
+.team-icon {
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+}
+
+.team-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.team-votes {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+}
+
+.votes-count {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-accent);
+    display: block;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.votes-count.updated {
+    animation: countPop 0.4s ease;
+    color: #4FC3F7;
+}
+
+@keyframes countPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+.votes-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+    display: block;
+}
+
+.team-status {
+    font-size: 1.2rem;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* VS Badge */
+.vs-badge {
+    background: var(--primary-accent);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(66, 165, 245, 0.5);
+    flex-shrink: 0;
+}
+
+.vs-badge.spinning {
+    animation: vsSpin 0.2s linear infinite;
+}
+
+@keyframes vsSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Результат */
+.randomizer-result {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 15px;
+    margin: 15px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.result-emoji {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.result-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+}
+
+.result-text.winner-text {
+    font-size: 1.3rem;
+    color: var(--primary-accent);
+    text-shadow: 0 0 15px rgba(66, 165, 245, 0.5);
+}
+
+/* Кнопка */
+.randomizer-btn {
+    background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-accent-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 20px 60px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 6px 30px rgba(66, 165, 245, 0.5);
+    margin-bottom: 15px;
+}
+
+.randomizer-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(66, 165, 245, 0.7);
+}
+
+.randomizer-btn:active {
+    transform: scale(0.98);
+}
+
+.randomizer-btn:disabled {
+    background: var(--secondary-gray);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.randomizer-btn .btn-icon {
+    font-size: 1.8rem;
+}
+
+.randomizer-btn.spinning {
+    background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 0.5s ease infinite;
+}
+
+.randomizer-btn.spinning .btn-icon {
+    animation: iconSpin 0.15s linear infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes iconSpin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+/* Кнопка сброса */
+.randomizer-reset {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.randomizer-reset:hover {
+    color: white;
+    border-color: white;
+}
+
+/* Конфетти */
+.confetti {
+    position: absolute;
+    border-radius: 3px;
+    animation: confettiFall 2s ease-out forwards;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(300px) rotate(720deg) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* +1 анимация */
+.plus-one {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4FC3F7;
+    animation: plusOneFloat 1s ease-out forwards;
+    pointer-events: none;
+    z-index: 20;
+    text-shadow: 0 0 10px rgba(79, 195, 247, 0.8);
+}
+
+@keyframes plusOneFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-10px) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-60px) scale(0.8);
+        opacity: 0;
+    }
+}
+        /* NOMINATIONS */
+        .nominations-section {
+            background: linear-gradient(135deg, var(--yellow-light) 0%, rgba(245, 215, 0, 0.25) 100%);
+            border-radius: 20px;
+            padding: 35px;
+            margin-top: 25px;
+            border: 3px solid var(--primary-yellow);
+            text-align: center;
+        }
+
+        .nominations-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nominations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .nomination-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid var(--primary-yellow);
+            transition: all 0.3s ease;
+        }
+
+        .nomination-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(245, 215, 0, 0.3);
+        }
+
+        .nomination-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .nomination-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        /* REFLECTION */
+        .reflection-container {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .reflection-question {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+
+        .reflection-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .reflection-btn {
+            padding: 25px 35px;
+            border: 3px solid var(--border);
+            background: var(--surface);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 160px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .reflection-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .reflection-btn.tense {
+            border-color: var(--warning);
+        }
+
+        .reflection-btn.tense:hover,
+        .reflection-btn.tense.selected {
+            background: var(--warning-light);
+        }
+
+        .reflection-btn.interesting {
+            border-color: var(--success);
+        }
+
+        .reflection-btn.interesting:hover,
+        .reflection-btn.interesting.selected {
+            background: var(--success-light);
+        }
+
+        .reflection-btn.chaos {
+            border-color: var(--primary-yellow);
+        }
+
+        .reflection-btn.chaos:hover,
+        .reflection-btn.chaos.selected {
+            background: var(--yellow-light);
+        }
+
+        .reflection-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .reflection-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .reflection-count {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-top: 10px;
+            color: var(--primary-dark);
+        }
+
+        /* RESULTS */
+        .results-container {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 2px solid var(--border);
+        }
+
+        .results-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+        }
+
+        .results-chart {
+             display: flex;
+             justify-content: center;
+            align-items: flex-end;
+            gap: 25px;
+            height: 250px;
+            padding: 40px 20px 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 90px;
+        }
+
+        .bar {
+            width: 55px;
+            background: linear-gradient(to top, var(--primary-yellow), var(--secondary-gold));
+            border-radius: 10px 10px 0 0;
+            transition: height 0.5s ease;
+            position: relative;
+        }
+
+        .bar.tense {
+            background: linear-gradient(to top, var(--warning), #FF8A50);
+        }
+
+        .bar.interesting {
+            background: linear-gradient(to top, var(--success), #66BB6A);
+        }
+
+        .bar.chaos {
+            background: linear-gradient(to top, var(--primary-yellow), var(--secondary-gold));
+        }
+
+        .bar-value {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .bar-label {
+            margin-top: 10px;
+            font-size: 1.8rem;
+        }
+
+        .bar-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .results-summary {
+            text-align: center;
+            padding: 20px;
+            background: var(--background);
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .results-total {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .results-total strong {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .results-winner {
+            margin-top: 12px;
+            padding: 12px 22px;
+            background: var(--yellow-light);
+            border-radius: 25px;
+            display: inline-block;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .reset-votes-btn {
+            margin-top: 18px;
+            padding: 10px 22px;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .reset-votes-btn:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        /* FINAL MESSAGE */
+       .final-message {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    border: 3px solid var(--primary-accent);
+}
+
+        .final-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 18px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+        }
+
+        .final-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        .final-subtext {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-top: 12px;
+        }
+
+        /* THANK YOU */
+        .thank-you-section {
+            background: linear-gradient(135deg, var(--yellow-light) 0%, rgba(245, 215, 0, 0.25) 100%);
+            border-radius: 20px;
+            padding: 50px 35px;
+            text-align: center;
+            border: 3px solid var(--primary-yellow);
+            margin-top: 35px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thank-you-emoji {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .thank-you-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 18px;
+        }
+
+        .thank-you-text {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .thank-you-appreciation {
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-top: 25px;
+        }
+
+        .thank-you-hearts {
+            font-size: 1.8rem;
+            margin-top: 18px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.6rem; }
+            .timer-display { font-size: 3rem; }
+            .reflection-btn { min-width: 130px; padding: 18px 22px; }
+            .reflection-emoji { font-size: 2rem; }
+            .thank-you-title { font-size: 1.6rem; }
+            .thank-you-emoji { font-size: 3rem; }
+            .teacher-name { font-size: 2.4rem; }
+            .teacher-tagline { font-size: 0.95rem; padding: 12px 20px; }
+            .teacher-college-container { flex-direction: column; gap: 10px; }
+        }
+      /* КНОПКИ ПРОКРУТКИ С ДВУХ СТОРОН */
+.scroll-buttons {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.scroll-buttons.scroll-left {
+    left: 15px;
+}
+
+.scroll-buttons.scroll-right {
+    right: 15px;
+}
+
+.scroll-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-accent);
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-btn:hover {
+    background: var(--primary-accent);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(66, 165, 245, 0.4);
+}
+
+.scroll-btn:active {
+    transform: scale(0.95);
+}
+
+/* Адаптация контейнера под кнопки */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 15px 80px 100px;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .scroll-buttons {
+        gap: 10px;
+    }
+    
+    .scroll-buttons.scroll-left {
+        left: 8px;
+    }
+    
+    .scroll-buttons.scroll-right {
+        right: 8px;
+    }
+    
+    .scroll-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .container {
+        padding: 15px 60px 100px;
+    }
+}
+
+/* ВЫБОР КОМАНДЫ В НОМИНАЦИЯХ */
+.team-select {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.team-btn {
+    padding: 10px 20px;
+    border: 3px solid var(--primary-yellow);
+    background: white;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.team-btn:hover {
+    background: var(--yellow-light);
+    transform: scale(1.05);
+}
+
+.team-btn.selected {
+    background: var(--primary-yellow);
+    color: var(--primary-dark);
+    box-shadow: 0 5px 15px rgba(245, 215, 0, 0.4);
+    transform: scale(1.05);
+}
+
+.nomination-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    border: 2px solid var(--primary-yellow);
+    transition: all 0.3s ease;
+}
+
+.nomination-card.has-winner {
+    border-width: 3px;
+    box-shadow: 0 5px 20px rgba(245, 215, 0, 0.3);
+}
+.header-spacer {
+    height: 180px; /* Подстройте под высоту шапки + навигации */
+}
+/* Дата в шапке */
+.header-date {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary-white);
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+.header h2 {
+    margin-left: 10px;
+}
+/* СПОЙЛЕР С ОТВЕТАМИ */
+.spoiler-container {
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.spoiler-toggle {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.1) 100%);
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.spoiler-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-accent);
+}
+
+.spoiler-icon {
+    font-size: 1.3rem;
+}
+
+.spoiler-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.spoiler-arrow {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.spoiler-arrow.open {
+    transform: rotate(180deg);
+}
+
+.spoiler-content {
+    display: none;
+    margin-top: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    border: 2px solid var(--primary-accent);
+    animation: slideDown 0.3s ease;
+}
+
+.spoiler-content.show {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.spoiler-warning {
+    background: rgba(255, 193, 7, 0.2);
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #FFD54F;
+    text-align: center;
+}
+
+/* Секции ошибок */
+.errors-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.errors-section:last-of-type {
+    margin-bottom: 15px;
+}
+
+.errors-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.errors-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.errors-badge.critical {
+    background: rgba(239, 83, 80, 0.3);
+    color: #EF5350;
+}
+
+.errors-badge.serious {
+    background: rgba(255, 152, 0, 0.3);
+    color: #FFA726;
+}
+
+.errors-badge.minor {
+    background: rgba(66, 165, 245, 0.3);
+    color: #42A5F5;
+}
+
+.errors-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.errors-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.errors-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.errors-list li:last-child {
+    border-bottom: none;
+}
+
+.error-num {
+    min-width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-accent);
+    flex-shrink: 0;
+}
+
+.errors-section.critical .error-num {
+    background: rgba(239, 83, 80, 0.3);
+    color: #EF5350;
+}
+
+.errors-section.serious .error-num {
+    background: rgba(255, 152, 0, 0.3);
+    color: #FFA726;
+}
+
+.errors-section.minor .error-num {
+    background: rgba(66, 165, 245, 0.3);
+    color: #42A5F5;
+}
+
+.errors-total {
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    border-radius: 10px;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    margin-top: 5px;
+}
+
+.errors-total strong {
+    font-weight: 700;
+}
+
+/* СПОЙЛЕР СВЕТЛЫЙ (для светлого фона) */
+.spoiler-container.spoiler-light {
+    margin-top: 20px;
+}
+
+.spoiler-toggle-light {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-medium) 100%);
+    border: 2px dashed var(--primary-accent);
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.spoiler-toggle-light:hover {
+    background: var(--accent-medium);
+    border-style: solid;
+}
+
+.spoiler-toggle-light .spoiler-icon {
+    font-size: 1.3rem;
+}
+
+.spoiler-toggle-light .spoiler-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.spoiler-toggle-light .spoiler-arrow {
+    font-size: 0.8rem;
+    color: var(--primary-accent);
+    transition: transform 0.3s ease;
+}
+
+.spoiler-content-light {
+    display: none;
+    margin-top: 15px;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 25px;
+    border: 2px solid var(--primary-accent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease;
+}
+
+.spoiler-content-light.show {
+    display: block;
+}
+
+/* Заголовок целей */
+.goals-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--accent-light);
+}
+
+.goals-icon {
+    font-size: 2rem;
+}
+
+.goals-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+/* Список целей */
+.goals-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.goals-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--accent-light) 0%, rgba(66, 165, 245, 0.08) 100%);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-accent);
+    transition: all 0.3s ease;
+}
+
+.goals-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(66, 165, 245, 0.2);
+}
+
+.goals-list li:last-child {
+    margin-bottom: 0;
+}
+
+.goal-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.goal-content {
+    flex: 1;
+}
+
+.goal-content strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 4px;
+}
+
+.goal-content p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ПРОВЕРКА ДОСТИЖЕНИЯ ЦЕЛЕЙ */
+.goals-check-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.goal-check-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--background);
+    border: 3px solid var(--border);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.goal-check-card:hover {
+    border-color: var(--primary-accent);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(66, 165, 245, 0.15);
+}
+
+.goal-check-card.achieved {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.2) 100%);
+    border-color: #4CAF50;
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);
+}
+
+.goal-check-card.achieved .goal-check-icon {
+    transform: scale(1.1);
+}
+
+.goal-check-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.goal-check-content {
+    flex: 1;
+}
+
+.goal-check-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 0 0 5px 0;
+}
+
+.goal-check-content p {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.goal-check-status {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.goal-check-card .goal-checked {
+    display: none;
+}
+
+.goal-check-card .goal-unchecked {
+    display: inline;
+}
+
+.goal-check-card.achieved .goal-checked {
+    display: inline;
+    animation: checkPop 0.4s ease;
+}
+
+.goal-check-card.achieved .goal-unchecked {
+    display: none;
+}
+
+@keyframes checkPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Результат */
+.goals-result {
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-medium) 100%);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    border: 2px solid var(--primary-accent);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.goals-result.complete {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0.3) 100%);
+    border-color: #4CAF50;
+}
+
+.goals-result-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.goals-result.complete .goals-result-icon {
+    animation: celebrateBounce 0.6s ease;
+}
+
+@keyframes celebrateBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(-10deg); }
+    50% { transform: translateY(-10px) rotate(10deg); }
+    75% { transform: translateY(-15px) rotate(-5deg); }
+}
+
+.goals-result-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+
+.goals-progress {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    height: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.goals-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-accent), #4FC3F7);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.goals-result.complete .goals-progress-bar {
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+}
+
+.goals-progress-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.goals-reset-btn {
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--border);
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.goals-reset-btn:hover {
+    color: var(--primary-accent);
+    border-color: var(--primary-accent);
+}
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div><div class="header-badge">Мастер-класс<br><p class="header-date" id="currentDate"></p></div></div>
+        <div>
+            <p class="header-subtitle">ПМ.04 Сопровождение и обслуживание программного обеспечения компьютерных систем  | МДК.04.02 Обеспечение качества функционирования компьютерных систем</p>
+            <p class="header-subtitle"></p>
+            <p class="header-subtitle">Практическое занятие №2</p>
+        <h2>Сравнение результатов тестирования с требованиями технического задания или спецификацией</h2></div>        
+    </header>
+
+    <nav class="nav">
+        <button class="nav-btn active" onclick="showSection('overview')">
+            <span class="emoji">📋</span> Обзор
+        </button>
+        <button class="nav-btn" onclick="showSection('roles')">
+            <span class="emoji">👥</span> Роли
+        </button>
+        <button class="nav-btn" onclick="showSection('task')">
+            <span class="emoji">🎯</span> Задание
+        </button>
+        <button class="nav-btn" onclick="showSection('timer')">
+            <span class="emoji">⏱️</span> Таймер
+        </button>
+        <button class="nav-btn" onclick="showSection('reflection')">
+            <span class="emoji">💬</span> Обратная связь
+        </button>
+    </nav>
+<!-- Отступ под фиксированные элементы -->
+<div class="header-spacer"></div>
+    <div class="container">
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="section active">
+            <div class="teacher-profile">
+                <div class="teacher-avatar">👩‍🏫</div>
+                <h2 class="teacher-name">Сергеева Марина Сергеевна</h2>
+                <p class="teacher-position">Преподаватель</p>
+                <div class="teacher-college-container">
+                    <div class="college-logo">
+                        <div class="college-logo-placeholder">
+                            <img src="https://shpk45.ru/themes/shpk45/i/logos/logo.png" alt="logo">
+                        </div>
+                    </div>
+                    <!-- <p class="teacher-college">ГБПОУ «Шадринский политехнический колледж»</p> -->
+                </div>
+                <p class="teacher-city">г. Шадринск</p>
+                <div class="teacher-tagline">💼 Сегодня мы работаем как настоящая команда из IT! 💼</div>
+            </div>
+
+            <div class="name-badge-section">
+                <h3 class="name-badge-title"><span>🏷️</span> Ваш бейдж</h3>
+                <p class="name-badge-subtitle">Напишите имя, как вам комфортно, чтобы к вам обращались</p>
+                <div class="badge-example">
+                    <div class="badge-header">УЧАСТНИК МАСТЕР-КЛАССА</div>
+                    <div class="badge-name-area">
+                        <span class="badge-name-placeholder">Ваше имя</span>
+                    </div>
+                    <div style="border: 3px dashed var(--border); border-radius: 12px; padding: 15px; margin-top: 10px; background: #FAFAFA;">
+                        <span style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 500;">Роль:</span>
+                        <span style="font-size: 1.2rem; color: var(--primary-dark); font-weight: 700; display: block; margin-top: 5px;">____________________</span>
+                    </div>
+                </div>
+                <div class="badge-tips">
+                    <div class="badge-tip">
+                        <span class="badge-tip-icon">✍️</span>
+                        <span class="badge-tip-text">Можно своё имя или ник</span>
+                    </div>
+                    <div class="badge-tip">
+                        <span class="badge-tip-icon">🗣️</span>
+                        <span class="badge-tip-text">Главное — чтобы его можно было произнести</span>
+                    </div>
+                    <div class="badge-tip">
+                        <span class="badge-tip-icon">🔤</span>
+                        <span class="badge-tip-text">Используйте кириллицу</span>
+                    </div>
+                    <div class="badge-tip">
+                        <span class="badge-tip-icon">📝</span>
+                        <span class="badge-tip-text">Пишите крупно и разборчиво</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <p class="quote-text">Сегодня не нужно знать всё<br>Важно — <strong>пробовать</strong>, <strong>обсуждать</strong> и <strong>думать как специалисты</strong></p>
+            </div>
+
+            <div class="safety-infographic">
+                <div class="safety-title"><span style="font-size: 2rem;">⚠️</span> Техника безопасности</div>
+                <div class="safety-rules">
+                    <div class="safety-rule">
+                        <div class="safety-rule-icon">💻</div>
+                        <div class="safety-rule-text">Работаем за компьютером аккуратно</div>
+                    </div>
+                    <div class="safety-rule">
+                        <div class="safety-rule-icon">🔌</div>
+                        <div class="safety-rule-text">Не трогаем провода и оборудование без необходимости</div>
+                    </div>
+                    <div class="safety-rule">
+                        <div class="safety-rule-icon">✋</div>
+                        <div class="safety-rule-text">Если что-то не работает — поднимаем руку</div>
+                    </div>
+                    <div class="safety-rule">
+                        <div class="safety-rule-icon">🤝</div>
+                        <div class="safety-rule-text">Бережём себя и окружающих</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📦</div>
+                    <div>
+                        <h2 class="card-title">Материалы</h2>
+                        <p class="card-subtitle">Что понадобится для работы</p>
+                    </div>
+                </div>
+                <div class="materials-grid">
+                    <div class="material-item">
+                        <div class="material-icon">💻</div>
+                        <div class="material-name">Приложение</div>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon">📄</div>
+                        <div class="material-name">Техническое задание</div>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon">📝</div>
+                        <div class="material-name">Бланк для ошибок</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- ROLES -->
+        <section id="roles" class="section">
+            <div class="quote-block">
+                <p class="quote-text">Представьте: вы — команда тестировщиков.<br>Перед вами система, которую уже почти готовы запустить в работу.<br>Но есть один вопрос — <strong>насколько она действительно готова?</strong></p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">👥</div>
+                    <div>
+                        <h2 class="card-title">Роли в команде</h2>
+                        <p class="card-subtitle">Нажмите на карточку для подробностей</p>
+                    </div>
+                </div>
+
+                <div class="roles-grid">
+                    <div class="role-card" onclick="toggleRole(this)">
+                        <div class="role-icon">🔍</div>
+                        <h3 class="role-title">Тестировщик</h3>
+                        <p class="role-subtitle">Специалист по тестированию</p>
+                        <span class="role-count">2 человека</span>
+                        <p class="click-hint">👆 Нажмите для подробностей</p>
+                        <div class="role-details">
+                            <div class="role-task"><span class="role-task-icon">🔎</span><span class="role-task-text">Ищет ошибки в приложении</span></div>
+                            <div class="role-task"><span class="role-task-icon">✅</span><span class="role-task-text">Проверяет систему по ТЗ</span></div>
+                            <div class="role-task"><span class="role-task-icon">🔄</span><span class="role-task-text">Воспроизводит баги</span></div>
+                            <div class="role-task"><span class="role-task-icon">📋</span><span class="role-task-text">Передаёт находки документатору</span></div>
+                        </div>
+                    </div>
+
+                    <div class="role-card" onclick="toggleRole(this)">
+                        <div class="role-icon">📊</div>
+                        <h3 class="role-title">Аналитик</h3>
+                        <p class="role-subtitle">Бизнес-аналитик</p>
+                        <span class="role-count">1 человек</span>
+                        <p class="click-hint">👆 Нажмите для подробностей</p>
+                        <div class="role-details">
+                            <div class="role-task"><span class="role-task-icon">📄</span><span class="role-task-text">Изучает техническое задание</span></div>
+                            <div class="role-task"><span class="role-task-icon">💡</span><span class="role-task-text">Объясняет, что это за ошибка</span></div>
+                            <div class="role-task"><span class="role-task-icon">⚠️</span><span class="role-task-text">Объясняет, почему она важна</span></div>
+                            <div class="role-task"><span class="role-task-icon">🎯</span><span class="role-task-text">Определяет тип ошибки</span></div>
+                        </div>
+                    </div>
+
+                    <div class="role-card" onclick="toggleRole(this)">
+                        <div class="role-icon">📝</div>
+                        <h3 class="role-title">Документатор</h3>
+                        <p class="role-subtitle">Технический писатель</p>
+                        <span class="role-count">1 человек</span>
+                        <p class="click-hint">👆 Нажмите для подробностей</p>
+                        <div class="role-details">
+                            <div class="role-task"><span class="role-task-icon">✍️</span><span class="role-task-text">Заполняет бланк ошибок</span></div>
+                            <div class="role-task"><span class="role-task-icon">📋</span><span class="role-task-text">Записывает все находки команды</span></div>
+                            <div class="role-task"><span class="role-task-icon">🗂️</span><span class="role-task-text">Структурирует информацию</span></div>
+                            <div class="role-task"><span class="role-task-icon">📊</span><span class="role-task-text">Готовит материал для спикера</span></div>
+                        </div>
+                    </div>
+
+                    <div class="role-card" onclick="toggleRole(this)">
+                        <div class="role-icon">🎤</div>
+                        <h3 class="role-title">Спикер</h3>
+                        <p class="role-subtitle">Докладчик</p>
+                        <span class="role-count">1 человек</span>
+                        <p class="click-hint">👆 Нажмите для подробностей</p>
+                        <div class="role-details">
+                            <div class="role-task"><span class="role-task-icon">📢</span><span class="role-task-text">Представляет результат команды</span></div>
+                            <div class="role-task"><span class="role-task-icon">🎯</span><span class="role-task-text">Выделяет 2-3 главные ошибки</span></div>
+                            <div class="role-task"><span class="role-task-icon">💬</span><span class="role-task-text">Отвечает на вопросы</span></div>
+                            <div class="role-task"><span class="role-task-icon">✅</span><span class="role-task-text">Говорит, готова ли система</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block" style="margin-top: 25px; margin-bottom: 0;">
+                    <p class="quote-text">Вы работаете как команда — <strong>помогаете друг другу!</strong></p>
+                </div>
+            </div>
+             <!-- Слайд 6: Цели занятия (спойлер) -->
+<div class="slide">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-icon">🎯</div>
+            <div>
+                <h2 class="card-title">Вы готовы к работе в команде!</h2>
+
+            </div>
+        </div>
+        
+        <div class="quote-block">
+            <p class="quote-text">
+                Каждая роль важна. Вместе вы — <strong>сильная команда тестировщиков!</strong>
+            </p>
+        </div>
+        
+        <!-- СПОЙЛЕР С ЦЕЛЯМИ -->
+        <div class="spoiler-container spoiler-light">
+            <button class="spoiler-toggle spoiler-toggle-light" onclick="toggleGoalsSpoiler()">
+                <span class="spoiler-icon" id="goalsSpoilerIcon">📋</span>
+                <span class="spoiler-text">Цели занятия</span>
+                <span class="spoiler-arrow" id="goalsSpoilerArrow">▼</span>
+            </button>
+            
+            <div class="spoiler-content spoiler-content-light" id="goalsSpoilerContent">
+                <div class="goals-header">
+                    <span class="goals-icon">🎯</span>
+                    <span class="goals-title">Цели занятия</span>
+                </div>
+                
+                <ul class="goals-list">
+                    <li>
+                        <span class="goal-icon">🔍</span>
+                        <div class="goal-content">
+                            <strong>Понять как выявить и классифицировать ошибки</strong>
+                            <p>в программной системе</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="goal-icon">📊</span>
+                        <div class="goal-content">
+                            <strong>Систематизировать и обобщить знания</strong>
+                            <p>о типах ошибок (критические, значительные, незначительные)</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="goal-icon">💡</span>
+                        <div class="goal-content">
+                            <strong>Отработать навыки анализа</strong>
+                            <p>результатов тестирования</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+         </div>
+    </div>
+</div>              
+        </section>
+
+        <!-- TASK -->
+        <section id="task" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🎯</div>
+                    <div>
+                        <h2 class="card-title">Ваша задача</h2>
+                        <p class="card-subtitle">Что нужно сделать за 15 минут</p>
+                    </div>
+                </div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <span class="task-number">1</span>
+                        <div class="task-content"><h4>Найти ошибки</h4><p>Проверьте приложение и найдите несоответствия с ТЗ</p></div>
+                    </li>
+                    <li class="task-item">
+                        <span class="task-number">2</span>
+                        <div class="task-content"><h4>Определить тип ошибки</h4><p>Критические / Серьёзные / Незначительные — насколько она серьёзна?</p></div>
+                    </li>
+                    <li class="task-item">
+                        <span class="task-number">3</span>
+                        <div class="task-content"><h4>Внести данные об ошибках</h4><p>Описать ошибку, что именно не работает</p></div>
+                    </li>
+                </ul>
+                <div class="quote-block" style="margin-top: 20px;">
+                    <p class="quote-text">Не обязательно найти всё.<br>Важно — <strong>как вы думаете и объясняете</strong>.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🏷️</div>
+                    <div>
+                        <h2 class="card-title">Типы ошибок</h2>
+                        <p class="card-subtitle">Классификация по серьёзности</p>
+                    </div>
+                </div>
+                <div class="roles-grid">
+                    <div class="role-card" style="cursor: default;">
+                        <div class="role-icon" style="background: var(--danger-light);">🔴</div>
+                        <h3 class="role-title">Критические</h3>
+                        <p class="role-subtitle">Блокирующие ошибки</p>
+                        <span class="role-count" style="background: var(--danger-light); color: var(--danger);">8 ошибок</span>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px;">Блокируют работу системы</p>
+                    </div>
+                    <div class="role-card" style="cursor: default;">
+                        <div class="role-icon" style="background: var(--warning-light);">🟠</div>
+                        <h3 class="role-title">Серьёзные</h3>
+                        <p class="role-subtitle">Важные ошибки</p>
+                        <span class="role-count" style="background: var(--warning-light); color: var(--warning);">5 ошибок</span>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px;">Нарушают основной функционал</p>
+                    </div>
+                    <div class="role-card" style="cursor: default;">
+                        <div class="role-icon" style="background: var(--yellow-light);">🔵</div>
+                        <h3 class="role-title">Незначительные</h3>
+                        <p class="role-subtitle">Мелкие ошибки</p>
+                        <span class="role-count">3 ошибки</span>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px;">Косметические проблемы</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💡</div>
+                    <div>
+                        <h2 class="card-title">Фразы-подсказки</h2>
+                        <p class="card-subtitle">Вопросы, которые помогут думать</p>
+                    </div>
+                </div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <span class="task-number">❓</span>
+                        <div class="task-content"><h4>«А это соответствует требованиям?»</h4><p>Сравнивайте с ТЗ</p></div>
+                    </li>
+                    <li class="task-item">
+                        <span class="task-number">❓</span>
+                        <div class="task-content"><h4>«Как пользователь это воспримет?»</h4><p>Думайте с позиции пользователя</p></div>
+                    </li>
+                    <li class="task-item">
+                        <span class="task-number">❓</span>
+                        <div class="task-content"><h4>«Это критично или нет?»</h4><p>Определяйте важность ошибки</p></div>
+                    </li>
+                </ul>
+            </div>
+                                                                                                                                                                                                                       
+        </section>
+
+        <!-- TIMER -->
+        <section id="timer" class="section">
+            <div class="timer-container">
+                <p class="timer-label">⏱️ Время на практическую работу — 15 минут</p>
+                <div class="timer-display" id="timerDisplay">15:00</div>
+                <p class="timer-status" id="timerStatus">Нажмите «Старт» для начала</p>
+                <div class="timer-controls">
+                    <button class="timer-btn start" id="startBtn" onclick="startTimer()">▶️ Старт</button>
+                    <button class="timer-btn pause" id="pauseBtn" onclick="pauseTimer()" style="display: none;">⏸️ Пауза</button>
+                    <button class="timer-btn reset" onclick="resetTimer()">🔄 Сброс</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⏰</div>
+                    <div>
+                        <h2 class="card-title">Контроль времени</h2>
+                        <p class="card-subtitle">Напоминания для команд</p>
+                    </div>
+                </div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <span class="task-number">10</span>
+                        <div class="task-content"><h4>10 минут осталось</h4><p>Продолжайте искать ошибки</p></div>
+                    </li>
+                    <li class="task-item">
+                        <span class="task-number">5</span>
+                        <div class="task-content"><h4>5 минут осталось</h4><p>Начинайте оформлять документацию</p></div>
+                    </li>
+                    <li class="task-item">
+                        <span class="task-number">2</span>
+                        <div class="task-content"><h4>2 минуты — завершаем!</h4><p>Готовьте материал для защиты</p></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="relaxation-infographic">
+               <!-- Слайд 3: Динамическая пауза -->
+<div class="slide">
+    <div class="section-title-card">
+        <span class="section-title-icon">🎯</span>
+        <h2 class="section-title-text">Динамическая пауза</h2>
+        <p class="section-title-subtitle">Определяем порядок выступления команд</p>
+    </div>
+    
+    <div class="randomizer-section">
+        <div class="randomizer-header">
+            <span class="randomizer-emoji">🙋‍♀️🙋‍♂️🙋</span>
+            <h3 class="randomizer-title">Кто выступает первым?</h3>
+            <p class="randomizer-subtitle">Случайности не случайны!</p>
+        </div>
+        
+        <div class="randomizer-arena">
+            <div class="team-vote-card team-1" id="team1Card">
+                <div class="team-icon">🔵</div>
+                <div class="team-name">Команда 1</div>
+                <div class="team-votes">
+                    <span class="votes-count" id="team1Votes">0</span>
+                    <span class="votes-label">голосов</span>
+                </div>
+                <div class="team-status" id="team1Status"></div>
+            </div>
+            
+            <div class="vs-badge" id="vsBadge">🎲</div>
+            
+            <div class="team-vote-card team-2" id="team2Card">
+                <div class="team-icon">🔴</div>
+                <div class="team-name">Команда 2</div>
+                <div class="team-votes">
+                    <span class="votes-count" id="team2Votes">0</span>
+                    <span class="votes-label">голосов</span>
+                </div>
+                <div class="team-status" id="team2Status"></div>
+            </div>
+        </div>
+        
+        <div class="randomizer-result">
+            <span class="result-emoji" id="resultEmoji">🤔</span>
+            <span class="result-text" id="resultText">Нажмите кнопку!</span>
+        </div>
+        
+        <button class="randomizer-btn" id="randomizerBtn" onclick="spinAndVote()">
+            <span class="btn-icon">🪄</span>
+            <span class="btn-text">Нажми!</span>
+        </button>
+        
+        <button class="randomizer-reset" onclick="resetTeamVotes()">🔄 Сбросить счёт</button>
+    </div>
+     <!-- СПОЙЛЕР С ОТВЕТАМИ -->
+    <div class="spoiler-container">
+        <button class="spoiler-toggle" onclick="toggleSpoiler()">
+            <span class="spoiler-icon" id="spoilerIcon">🔒</span>
+            <span class="spoiler-text">Показать ответы (только для преподавателя)</span>
+            <span class="spoiler-arrow" id="spoilerArrow">▼</span>
+        </button>
+        
+        <div class="spoiler-content" id="spoilerContent">
+            <div class="spoiler-warning">
+                ⚠️ Внимание! Ниже приведены все заложенные ошибки
+            </div>
+            
+            <!-- Критические ошибки -->
+            <div class="errors-section critical">
+                <div class="errors-header">
+                    <span class="errors-badge critical">🔴 Критические</span>
+                    <span class="errors-count">8 ошибок</span>
+                </div>
+                <ul class="errors-list">
+                    <li><span class="error-num">1</span> Кнопка «Записаться» ничего не делает</li>
+                    <li><span class="error-num">2</span> Можно выбрать прошлую дату</li>
+                    <li><span class="error-num">3</span> Поиск ищет по врачу</li>
+                    <li><span class="error-num">4</span> Фильтр статуса наоборот</li>
+                    <li><span class="error-num">5</span> Фильтр даты −1 день</li>
+                    <li><span class="error-num">6</span> Удаление без подтверждения</li>
+                    <li><span class="error-num">7</span> Пустое имя пациента</li>
+                    <li><span class="error-num">8</span> Врач = null</li>
+                </ul>
+            </div>
+            
+            <!-- Серьёзные ошибки -->
+            <div class="errors-section serious">
+                <div class="errors-header">
+                    <span class="errors-badge serious">🟠 Серьёзные</span>
+                    <span class="errors-count">5 ошибок</span>
+                </div>
+                <ul class="errors-list">
+                    <li><span class="error-num">9</span> «На сегодня» показывает завтра</li>
+                    <li><span class="error-num">10</span> «Отменено: 99» не изменяется</li>
+                    <li><span class="error-num">11</span> Пагинация не работает</li>
+                    <li><span class="error-num">12</span> Дубликат записи</li>
+                    <li><span class="error-num">13</span> Ночное время 23:30</li>
+                </ul>
+            </div>
+            
+            <!-- Незначительные ошибки -->
+            <div class="errors-section minor">
+                <div class="errors-header">
+                    <span class="errors-badge minor">🔵 Незначительные</span>
+                    <span class="errors-count">3 ошибки</span>
+                </div>
+                <ul class="errors-list">
+                    <li><span class="error-num">14</span> Опечатка «Confimed»</li>
+                    <li><span class="error-num">15</span> «Cancelled» (на английском)</li>
+                    <li><span class="error-num">16</span> Телефон без форматирования</li>
+                </ul>
+            </div>
+            
+            <div class="errors-total">
+                📊 Всего заложено: <strong>16 ошибок</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <!-- REFLECTION -->
+<section id="reflection" class="section">
+    <div class="slide-indicator" id="reflection-indicator"></div>
+    
+    <div class="slides-container" id="reflection-slides">
+        <!-- Слайд 2: Достижение целей -->
+<div class="slide">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-icon">🎯</div>
+            <div>
+                <h2 class="card-title">Достигли ли мы целей?</h2>
+                <p class="card-subtitle">Оцените результаты занятия</p>
+            </div>
+        </div>
+        
+        <div class="goals-check-container">
+            
+            <!-- Цель 1 -->
+            <div class="goal-check-card" id="goal1" onclick="toggleGoal('goal1')">
+                <div class="goal-check-icon">🔍</div>
+                <div class="goal-check-content">
+                    <h4>Выявить и классифицировать ошибки</h4>
+                    <p>в программной системе</p>
+                </div>
+                <div class="goal-check-status">
+                    <span class="goal-unchecked">⬜</span>
+                    <span class="goal-checked">✅</span>
+                </div>
+            </div>
+            
+            <!-- Цель 2 -->
+            <div class="goal-check-card" id="goal2" onclick="toggleGoal('goal2')">
+                <div class="goal-check-icon">📊</div>
+                <div class="goal-check-content">
+                    <h4>Систематизировать знания о типах ошибок</h4>
+                    <p>критические, значительные, незначительные</p>
+                </div>
+                <div class="goal-check-status">
+                    <span class="goal-unchecked">⬜</span>
+                    <span class="goal-checked">✅</span>
+                </div>
+            </div>
+            
+            <!-- Цель 3 -->
+            <div class="goal-check-card" id="goal3" onclick="toggleGoal('goal3')">
+                <div class="goal-check-icon">💡</div>
+                <div class="goal-check-content">
+                    <h4>Отработать навыки анализа</h4>
+                    <p>результатов тестирования</p>
+                </div>
+                <div class="goal-check-status">
+                    <span class="goal-unchecked">⬜</span>
+                    <span class="goal-checked">✅</span>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Результат -->
+        <div class="goals-result" id="goalsResult">
+            <div class="goals-result-icon" id="goalsResultIcon">🤔</div>
+            <div class="goals-result-text" id="goalsResultText">Отметьте достигнутые цели</div>
+            <div class="goals-progress">
+                <div class="goals-progress-bar" id="goalsProgressBar"></div>
+            </div>
+            <div class="goals-progress-text"><span id="goalsCount">0</span> из 3 целей достигнуто</div>
+        </div>
+        
+        <button class="goals-reset-btn" onclick="resetGoals()">🔄 Сбросить</button>
+    </div>
+</div>
+        <!-- Слайд 1: Голосование -->
+        <div class="slide active">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💬</div>
+                    <div>
+                        <h2 class="card-title">Обратная связь</h2>
+                        <p class="card-subtitle">Как прошло занятие?</p>
+                    </div>
+                </div>
+
+                <div class="reflection-container">
+                    <div class="reflection-options">
+                        <button class="reflection-btn tense" onclick="vote('tense')">
+                            <span class="reflection-emoji">😰</span>
+                            <span class="reflection-text">Напряжённо</span>
+                            <span class="reflection-count" id="count-tense">0</span>
+                        </button>
+                        <button class="reflection-btn interesting" onclick="vote('interesting')">
+                            <span class="reflection-emoji">🤩</span>
+                            <span class="reflection-text">Интересно</span>
+                            <span class="reflection-count" id="count-interesting">0</span>
+                        </button>
+                        <button class="reflection-btn chaos" onclick="vote('chaos')">
+                            <span class="reflection-emoji">🌀</span>
+                            <span class="reflection-text">Хаос</span>
+                            <span class="reflection-count" id="count-chaos">0</span>
+                        </button>
+                    </div>
+
+                    <div class="results-container" id="resultsContainer">
+                        <h3 class="results-title">📊 Результаты</h3>
+                        <div class="results-chart">
+                            <div class="chart-bar">
+                                <div class="bar tense" id="bar-tense" style="height: 0px;"><span class="bar-value" id="bar-value-tense">0</span></div>
+                                <span class="bar-label">😰</span>
+                            </div>
+                            <div class="chart-bar">
+                                <div class="bar interesting" id="bar-interesting" style="height: 0px;"><span class="bar-value" id="bar-value-interesting">0</span></div>
+                                <span class="bar-label">🤩</span>
+                            </div>
+                            <div class="chart-bar">
+                                <div class="bar chaos" id="bar-chaos" style="height: 0px;"><span class="bar-value" id="bar-value-chaos">0</span></div>
+                                <span class="bar-label">🌀</span>
+                            </div>
+                        </div>
+                        <div class="results-summary">
+                            <p class="results-total">Всего: <strong id="totalVotes">0</strong></p>
+                            <button class="reset-votes-btn" onclick="resetVotes()">🔄 Сбросить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Слайд 2: Номинации -->
+        <div class="slide">
+            <div class="nominations-section">
+                <h3 class="nominations-title"><span>🏆</span> Номинации</h3>
+                <div class="nominations-grid">
+                    
+                    <div class="nomination-card" id="nom-1">
+                        <div class="nomination-emoji">👁️</div>
+                        <div class="nomination-name">Самые внимательные тестировщики</div>
+                        <div class="team-select">
+                            <button class="team-btn" onclick="toggleTeam('nom-1', 1)">Команда 1</button>
+                            <button class="team-btn" onclick="toggleTeam('nom-1', 2)">Команда 2</button>
+                        </div>
+                    </div>
+                    
+                    <div class="nomination-card" id="nom-2">
+                        <div class="nomination-emoji">📢</div>
+                        <div class="nomination-name">Лучшее выступление</div>
+                        <div class="team-select">
+                            <button class="team-btn" onclick="toggleTeam('nom-2', 1)">Команда 1</button>
+                            <button class="team-btn" onclick="toggleTeam('nom-2', 2)">Команда 2</button>
+                        </div>
+                    </div>
+                    
+                    <div class="nomination-card" id="nom-4">
+                        <div class="nomination-emoji">🤝</div>
+                        <div class="nomination-name">Самая сильная команда</div>
+                        <div class="team-select">
+                            <button class="team-btn" onclick="toggleTeam('nom-4', 1)">Команда 1</button>
+                            <button class="team-btn" onclick="toggleTeam('nom-4', 2)">Команда 2</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button class="reset-votes-btn" onclick="resetNominations()" style="margin-top: 20px;">🔄 Сбросить номинации</button>
+            </div>
+        </div>
+        
+        <!-- Слайд 3: Домашнее задание -->
+        <div class="slide">
+            <div class="card" style="background: linear-gradient(135deg, var(--yellow-light) 0%, rgba(245, 215, 0, 0.25) 100%); border: 3px solid var(--primary-yellow);">
+                <div class="card-header">
+                    <div class="card-icon" style="background: var(--primary-yellow);">📚</div>
+                    <div>
+                        <h2 class="card-title">Домашнее задание</h2>
+                        <p class="card-subtitle">Продолжайте развивать навыки</p>
+                    </div>
+                </div>
+                <ul class="task-list">
+                    <li class="task-item"><span class="task-number">1</span><div class="task-content"><h4>Станьте «критичным пользователем»</h4><p>Анализируйте: удобно ли? Понятно ли?</p></div></li>
+                    <li class="task-item"><span class="task-number">2</span><div class="task-content"><h4>Замечайте «косяки»</h4><p>Кнопка не туда? Текст обрезается? Фиксируйте!</p></div></li>
+                    <li class="task-item"><span class="task-number">3</span><div class="task-content"><h4>Думайте: «А как можно лучше?»</h4><p>Предлагайте улучшения</p></div></li>
+                    <li class="task-item"><span class="task-number">4</span><div class="task-content"><h4>Тренируйте насмотренность на любимых сервисах</h4><p>ВКонтакте, Маркетплесы, Госуслуги...</p></div></li>
+                </ul>
+                <div style="text-align: center; margin-top: 20px;">
+                    <p style="font-weight: 700; color: var(--primary-dark); font-size: 1.2rem;">Спасибо за участие! Удачи в профессии! 👋</p>
+                    <div style="font-size: 1.8rem; margin-top: 10px;">❤️ 💛 ❤️</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</section>
+
+    </div>
+<!-- КНОПКИ ПРОКРУТКИ — ЛЕВАЯ СТОРОНА -->
+<div class="scroll-buttons scroll-left">
+    <button class="scroll-btn" onclick="scrollPage(-200)">▲</button>
+    <button class="scroll-btn" onclick="scrollPage(200)">▼</button>
+</div>
+
+<!-- КНОПКИ ПРОКРУТКИ — ПРАВАЯ СТОРОНА -->
+<div class="scroll-buttons scroll-right">
+    <button class="scroll-btn" onclick="scrollPage(-200)">▲</button>
+    <button class="scroll-btn" onclick="scrollPage(200)">▼</button>
+</div>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            event.target.closest('.nav-btn').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function toggleRole(card) {
+            card.classList.toggle('expanded');
+        }
+
+        let timerInterval;
+        let timeRemaining = 15 * 60;
+        let isRunning = false;
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            const display = document.getElementById('timerDisplay');
+            display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            display.classList.remove('warning', 'danger');
+            if (timeRemaining <= 60) {
+                display.classList.add('danger');
+            } else if (timeRemaining <= 180) {
+                display.classList.add('warning');
+            }
+        }
+
+        function startTimer() {
+            if (isRunning) return;
+            isRunning = true;
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('pauseBtn').style.display = 'inline-flex';
+            document.getElementById('timerStatus').textContent = '⏱️ Время пошло!';
+            timerInterval = setInterval(() => {
+                if (timeRemaining > 0) {
+                    timeRemaining--;
+                    updateTimerDisplay();
+                    if (timeRemaining === 10 * 60) {
+                        document.getElementById('timerStatus').textContent = '⏱️ 10 минут осталось!';
+                    } else if (timeRemaining === 5 * 60) {
+                        document.getElementById('timerStatus').textContent = '⚠️ 5 минут! Оформляйте документацию!';
+                    } else if (timeRemaining === 2 * 60) {
+                        document.getElementById('timerStatus').textContent = '🔔 2 минуты — завершаем!';
+                    }
+                } else {
+                    clearInterval(timerInterval);
+                    isRunning = false;
+                    document.getElementById('timerStatus').textContent = '🔔 Время вышло!';
+                    document.getElementById('startBtn').style.display = 'inline-flex';
+                    document.getElementById('pauseBtn').style.display = 'none';
+                    alert('⏰ Время на практическую работу вышло!');
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            document.getElementById('startBtn').style.display = 'inline-flex';
+            document.getElementById('pauseBtn').style.display = 'none';
+            document.getElementById('timerStatus').textContent = '⏸️ Пауза';
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timeRemaining = 15 * 60;
+            updateTimerDisplay();
+            document.getElementById('startBtn').style.display = 'inline-flex';
+            document.getElementById('pauseBtn').style.display = 'none';
+            document.getElementById('timerStatus').textContent = 'Нажмите «Старт» для начала';
+            document.getElementById('timerDisplay').classList.remove('warning', 'danger');
+        }
+
+        let votes = { tense: 0, interesting: 0, chaos: 0 };
+
+        function vote(type) {
+            votes[type]++;
+            document.getElementById(`count-${type}`).textContent = votes[type];
+            const btn = event.target.closest('.reflection-btn');
+            btn.classList.add('selected');
+            setTimeout(() => btn.classList.remove('selected'), 300);
+            updateChart();
+        }
+
+        function updateChart() {
+            const total = votes.tense + votes.interesting + votes.chaos;
+            const maxVotes = Math.max(votes.tense, votes.interesting, votes.chaos, 1);
+            const maxHeight = 140;
+            ['tense', 'interesting', 'chaos'].forEach(type => {
+                const height = (votes[type] / maxVotes) * maxHeight;
+                document.getElementById(`bar-${type}`).style.height = `${height}px`;
+                document.getElementById(`bar-value-${type}`).textContent = votes[type];
+            });
+            document.getElementById('totalVotes').textContent = total;
+            const winnerText = document.getElementById('winnerText');
+            if (total === 0) {
+                winnerText.textContent = 'Голосование началось!';
+            } else {
+                let maxCount = Math.max(votes.tense, votes.interesting, votes.chaos);
+                const winners = [];
+                if (votes.tense === maxCount) winners.push('😰 Напряжённо');
+                if (votes.interesting === maxCount) winners.push('🤩 Интересно');
+                if (votes.chaos === maxCount) winners.push('🌀 Хаос');
+                if (winners.length > 1) {
+                    winnerText.textContent = `Лидируют: ${winners.join(' и ')}`;
+                } else {
+                    winnerText.textContent = `Лидер: ${winners[0]}`;
+                }
+            }
+        }
+
+        function resetVotes() {
+            votes = { tense: 0, interesting: 0, chaos: 0 };
+            ['tense', 'interesting', 'chaos'].forEach(type => {
+                document.getElementById(`count-${type}`).textContent = '0';
+                document.getElementById(`bar-${type}`).style.height = '0px';
+                document.getElementById(`bar-value-${type}`).textContent = '0';
+            });
+            document.getElementById('totalVotes').textContent = '0';
+            document.getElementById('winnerText').textContent = 'Голосование началось!';
+        }
+
+        updateTimerDisplay();
+        // ПРОКРУТКА СТРАНИЦЫ
+function scrollPage(amount) {
+    window.scrollBy({
+        top: amount,
+        behavior: 'smooth'
+    });
+}
+// НОМИНАЦИИ
+function toggleTeam(nominationId, teamNumber) {
+    const card = document.getElementById(nominationId);
+    const buttons = card.querySelectorAll('.team-btn');
+    const clickedBtn = buttons[teamNumber - 1];
+    
+    // Переключаем состояние кнопки (можно выбрать обе)
+    clickedBtn.classList.toggle('selected');
+    
+    // Проверяем, есть ли хоть одна выбранная
+    const hasSelection = card.querySelector('.team-btn.selected');
+    card.classList.toggle('has-winner', hasSelection !== null);
+}
+
+function resetNominations() {
+    document.querySelectorAll('.nomination-card').forEach(card => {
+        card.classList.remove('has-winner');
+        card.querySelectorAll('.team-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+    });
+}
+// РУЛЕТКА С НАКОПЛЕНИЕМ ГОЛОСОВ
+let teamVotes = { team1: 0, team2: 0 };
+let isSpinning = false;
+let spinTimeout = null;
+
+function spinAndVote() {
+    if (isSpinning) return;
+    isSpinning = true;
+    
+    const btn = document.getElementById('randomizerBtn');
+    const vsBadge = document.getElementById('vsBadge');
+    const team1Card = document.getElementById('team1Card');
+    const team2Card = document.getElementById('team2Card');
+    const resultEmoji = document.getElementById('resultEmoji');
+    const resultText = document.getElementById('resultText');
+    
+    // Сброс предыдущего состояния
+    team1Card.className = 'team-vote-card team-1';
+    team2Card.className = 'team-vote-card team-2';
+    document.getElementById('team1Status').textContent = '';
+    document.getElementById('team2Status').textContent = '';
+    resultText.className = 'result-text';
+    
+    // Запуск анимации
+    btn.disabled = true;
+    btn.classList.add('spinning');
+    vsBadge.classList.add('spinning');
+    team1Card.classList.add('spinning');
+    team2Card.classList.add('spinning');
+    
+    // Эмодзи во время вращения
+    const spinEmojis = ['🎲', '🎰', '🎯', '🔮', '⚡', '✨', '🌟', '💫'];
+    let emojiIndex = 0;
+    
+    const emojiInterval = setInterval(function() {
+        resultEmoji.textContent = spinEmojis[emojiIndex % spinEmojis.length];
+        emojiIndex++;
+    }, 100);
+    
+    resultText.textContent = 'Крутится...';
+    
+    // Определяем победителя заранее
+    const winner = Math.random() < 0.5 ? 1 : 2;
+    
+    // Останавливаем через 3 секунды
+    spinTimeout = setTimeout(function() {
+        // Останавливаем эмодзи
+        clearInterval(emojiInterval);
+        
+        // Убираем анимации
+        btn.classList.remove('spinning');
+        vsBadge.classList.remove('spinning');
+        team1Card.classList.remove('spinning');
+        team2Card.classList.remove('spinning');
+        
+        // Добавляем голос и показываем результат
+        if (winner === 1) {
+            teamVotes.team1++;
+            team1Card.classList.add('winner');
+            team2Card.classList.add('loser');
+            document.getElementById('team1Status').textContent = '+1 🎉';
+            document.getElementById('team1Votes').textContent = teamVotes.team1;
+            resultEmoji.textContent = '🔵';
+            resultText.textContent = 'Голос уходит Команде 1!';
+        } else {
+            teamVotes.team2++;
+            team2Card.classList.add('winner');
+            team1Card.classList.add('loser');
+            document.getElementById('team2Status').textContent = '+1 🎉';
+            document.getElementById('team2Votes').textContent = teamVotes.team2;
+            resultEmoji.textContent = '🔴';
+            resultText.textContent = 'Голос уходит Команде 2!';
+        }
+        
+        resultText.classList.add('winner-text');
+        
+        // Возвращаем кнопку
+        btn.disabled = false;
+        isSpinning = false;
+        
+    }, 3000);
+}
+
+function resetTeamVotes() {
+    // Останавливаем если крутится
+    if (spinTimeout) {
+        clearTimeout(spinTimeout);
+    }
+    
+    teamVotes = { team1: 0, team2: 0 };
+    isSpinning = false;
+    
+    document.getElementById('team1Votes').textContent = '0';
+    document.getElementById('team2Votes').textContent = '0';
+    document.getElementById('team1Status').textContent = '';
+    document.getElementById('team2Status').textContent = '';
+    
+    const team1Card = document.getElementById('team1Card');
+    const team2Card = document.getElementById('team2Card');
+    team1Card.className = 'team-vote-card team-1';
+    team2Card.className = 'team-vote-card team-2';
+    
+    document.getElementById('resultEmoji').textContent = '🤔';
+    document.getElementById('resultText').textContent = 'Нажмите кнопку!';
+    document.getElementById('resultText').className = 'result-text';
+    
+    const btn = document.getElementById('randomizerBtn');
+    btn.disabled = false;
+    btn.classList.remove('spinning');
+    
+    document.getElementById('vsBadge').classList.remove('spinning');
+}
+// ТЕКУЩАЯ ДАТА
+function updateDate() {
+    const now = new Date();
+    
+    const options = { 
+        day: 'numeric', 
+        month: 'long', 
+        year: 'numeric' 
+    };
+    
+    const dateStr = now.toLocaleDateString('ru-RU', options);
+    
+    const dateElement = document.getElementById('currentDate');
+    if (dateElement) {
+        dateElement.textContent = dateStr;
+    }
+}
+
+// Вызываем при загрузке
+updateDate();
+// СПОЙЛЕР
+function toggleSpoiler() {
+    const content = document.getElementById('spoilerContent');
+    const arrow = document.getElementById('spoilerArrow');
+    const icon = document.getElementById('spoilerIcon');
+    
+    content.classList.toggle('show');
+    arrow.classList.toggle('open');
+    
+    if (content.classList.contains('show')) {
+        icon.textContent = '🔓';
+    } else {
+        icon.textContent = '🔒';
+    }
+}
+// СПОЙЛЕР ЦЕЛЕЙ
+function toggleGoalsSpoiler() {
+    const content = document.getElementById('goalsSpoilerContent');
+    const arrow = document.getElementById('goalsSpoilerArrow');
+    const icon = document.getElementById('goalsSpoilerIcon');
+    
+    content.classList.toggle('show');
+    arrow.classList.toggle('open');
+    
+    if (content.classList.contains('show')) {
+        icon.textContent = '📖';
+    } else {
+        icon.textContent = '📋';
+    }
+}
+// ПРОВЕРКА ДОСТИЖЕНИЯ ЦЕЛЕЙ
+let achievedGoals = { goal1: false, goal2: false, goal3: false };
+
+function toggleGoal(goalId) {
+    achievedGoals[goalId] = !achievedGoals[goalId];
+    
+    const card = document.getElementById(goalId);
+    card.classList.toggle('achieved', achievedGoals[goalId]);
+    
+    updateGoalsResult();
+}
+
+function updateGoalsResult() {
+    const count = Object.values(achievedGoals).filter(v => v).length;
+    const total = 3;
+    const percent = (count / total) * 100;
+    
+    document.getElementById('goalsCount').textContent = count;
+    document.getElementById('goalsProgressBar').style.width = percent + '%';
+    
+    const result = document.getElementById('goalsResult');
+    const icon = document.getElementById('goalsResultIcon');
+    const text = document.getElementById('goalsResultText');
+    
+    if (count === 0) {
+        icon.textContent = '🤔';
+        text.textContent = 'Отметьте достигнутые цели';
+        result.classList.remove('complete');
+    } else if (count === 1) {
+        icon.textContent = '👍';
+        text.textContent = 'Хорошее начало!';
+        result.classList.remove('complete');
+    } else if (count === 2) {
+        icon.textContent = '💪';
+        text.textContent = 'Отличная работа!';
+        result.classList.remove('complete');
+    } else if (count === 3) {
+        icon.textContent = '🎉';
+        text.textContent = 'Все цели достигнуты!';
+        result.classList.add('complete');
+    }
+}
+
+function resetGoals() {
+    achievedGoals = { goal1: false, goal2: false, goal3: false };
+    
+    document.querySelectorAll('.goal-check-card').forEach(card => {
+        card.classList.remove('achieved');
+    });
+    
+    updateGoalsResult();
+}
+    </script>
+
+</body>
+</html>
